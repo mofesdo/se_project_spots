@@ -1,14 +1,24 @@
 .card{
-
+    width: 413px;
 }
 .card__image{
     width: 413px;
     height: 413px;
     object-fit: cover;
+    display: block;
+}
+
+.card__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .card__like-btn{
     background-image: url(../images/heart.svg);
     background-position: center;
+    border: none;
+    background-color: transparent;
+    opacity: 40%;
     width: 23px;
     height: 20px;
 }

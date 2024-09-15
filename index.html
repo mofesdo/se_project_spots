@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spots</title>
-    <meta
-    name="description"
-    content="???"
-  />
-  <meta name="author" content="Modesto Amador" />
-  <meta name="keywords" content="HTML, CSS, ???" />
+    <meta name="description" content="???" />
+    <meta name="author" content="Modesto Amador" />
+    <meta name="keywords" content="HTML, CSS, ???" />
 
-  <link rel="stylesheet" href="./vendor/normalize.css" />
-  <link rel="stylesheet" href="./pages/index.css" />
-  <link rel="icon" href="favicon.ico" />
-</head>
-<body>
+    <link rel="stylesheet" href="./vendor/normalize.css" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
     <div class="page">
-        <header class="header">
-            <img src="./images/logo.svg" alt="" class="header__logo">
-        </header>
-        <main class="content">
-            <section class="profile page__section">
-                <img src="./images/avatar.jpg" alt="User's Avatar" class="profile__avatar">
-                <div class="profile__column">
-                    <h1 class="profile__name">Bessie Coleman</h1>
-                    <p class="profile__description">Civil Aviator</p>
-                    <button class="profile__edit-btn">
-                        <img src="./images/pencil.svg" alt="Pencil Icon">Edit Profile
-                    </button>
-                </div>
-                <button class="profile__add-btn"><img src="./images/plus.svg" alt="Plus Icon">New Post</button>
-            </section>
-        </main>
-        <footer class="footer"></footer>
+      <header class="header">
+        <img src="./images/logo.svg" alt="" class="header__logo" />
+      </header>
+      <main class="content">
+        <section class="profile page__section">
+          <img
+            src="./images/avatar.jpg"
+            alt="User's Avatar"
+            class="profile__avatar"
+          />
+          <div class="profile__column">
+            <h1 class="profile__name">Bessie Coleman</h1>
+            <p class="profile__description">Civil Aviator</p>
+            <button class="profile__edit-btn">
+              <img src="./images/pencil.svg" alt="Pencil Icon" />Edit Profile
+            </button>
+          </div>
+          <button class="profile__add-btn">
+            <img src="./images/plus.svg" alt="Plus Icon" />New Post
+          </button>
+        </section>
+        <section class="cards">
+          <ul class="cards__list">
+            <li class="card">
+              <img
+                src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
+                alt="Val Thorens"
+                class="card__image"
+              />
+              <div class="card__content">
+                <h2 class="card__title">Val Thorens</h2>
+                <button type="button" class="card__like-btn"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer"></footer>
     </div>
-    
-</body>
+  </body>
 </html>

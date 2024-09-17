@@ -2,20 +2,34 @@
 
 ### Overview  
 
-* Intro  
+* Intro
+* Technologies / Techniques  
 * Figma  
-* Images  
+* Images
+* Live Site
   
 **Intro**
   
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
+Spots is a website designed to showcase art gallery pieces. Spots uses dynamic responsiveness to allow the art pieces to be visible smoothly across desktop and mobile devices.
+
+**Technologies / Techniques**
+
+* Using a combination of Flexbox and Grid, I was able to style the Profile Section and Card Section as seen below. 
+* Media Queries were used to allow smooth experiences on both desktop and mobile devices.
+* This project also follows BEM methodology to structure my files and CSS code neatly. 
+* Google Fonts were imported into this project, specifically Poppins font face.
+* Figma was used as the blueprint for designing this website. See the link to the figma project below!
   
 **Figma**  
   
 * [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
   
 **Images**  
+![Desktop View](./images/spots-desktop-view.jpg)
+![Mobile View](./images/spots-mobile-view.jpg)
   
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+**[View Spots Live!](https://mofesdo.github.io/se_project_spots/)**
+
+Thanks for checking out Spots!
+
+[Short Video Explaining Spots](https://static.vecteezy.com/system/resources/previews/017/197/459/original/coming-soon-icon-symbol-on-transparent-background-free-png.png)

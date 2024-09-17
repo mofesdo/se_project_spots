@@ -69,11 +69,15 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 16px;
+    display: flex;
 }
 .profile__add-btn_image{
     width: 12px;
     height: 12px;
     margin: auto 8px auto auto;
+}
+.profile__add-btn_text{
+    margin: auto 24px auto 0;
 }
 
 @media screen and (max-width: 627px){

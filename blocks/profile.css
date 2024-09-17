@@ -70,6 +70,7 @@
     font-size: 16px;
     line-height: 16px;
     display: flex;
+    padding: 0;
 }
 .profile__add-btn_image{
     width: 12px;
@@ -88,18 +89,21 @@
         text-align: center;
         padding: 20px 0 0;
     }
-
     .profile__avatar{
         width: 80px;
         height: 80px;
         margin: 0 0 12px;
     }
-
+    .profile__edit-btn{
+        margin: 0 auto;
+    }
     .profile__add-btn{
         margin: 0 0 20px;
         width: 100%;
     }
-
+    .profile__add-btn_text{
+        margin: auto auto auto 0;
+    }
     .profile__name{
         font-size: 20px;
         margin: 0 0 6px;

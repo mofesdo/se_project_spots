@@ -32,4 +32,4 @@ Spots is a website designed to showcase art gallery pieces. Spots uses dynamic r
 
 Thanks for checking out Spots!
 
-[Short Video Explaining Spots](https://static.vecteezy.com/system/resources/previews/017/197/459/original/coming-soon-icon-symbol-on-transparent-background-free-png.png)
+[Short Video Explaining Spots](https://drive.google.com/file/d/1wSu62cfxa0K8ZcLM2LhbFp0pniUaHRMj/view?usp=sharing)

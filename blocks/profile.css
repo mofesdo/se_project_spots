@@ -71,15 +71,14 @@
   font-size: 16px;
   line-height: 16px;
   display: flex;
-  padding: 0;
+  padding: 18px 24px 18px 24px;
 }
-.profile__add-btn_image {
-  width: 12px;
-  height: 12px;
-  margin: auto 8px auto auto;
-}
-.profile__add-btn_text {
-  margin: auto 24px auto 0;
+.profile__add-btn::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  background-image: url(../images/plus.svg);
 }
 
 @media screen and (max-width: 627px) {
@@ -101,9 +100,11 @@
   .profile__add-btn {
     margin: 0 0 20px;
     width: 100%;
+    padding: 18px 97.5px;
   }
-  .profile__add-btn_text {
-    margin: auto auto auto 0;
+  .profile__add-btn::before {
+    width: 12px;
+    height: 12px;
   }
   .profile__name {
     font-size: 20px;

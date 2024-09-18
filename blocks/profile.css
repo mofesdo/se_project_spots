@@ -52,11 +52,12 @@
   padding: 0;
   display: flex;
 }
-.profile__edit-btn_image {
-  margin: auto 8px auto 0;
-}
-.profile__edit-btn_text {
-  margin: auto 0 auto 0;
+.profile__edit-btn::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  background-image: url(../images/pencil.svg);
 }
 .profile__add-btn {
   margin: auto 0 0 auto;

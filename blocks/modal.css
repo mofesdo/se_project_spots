@@ -50,6 +50,7 @@
   flex-direction: column;
   gap: 8px;
   margin: 0 0 32px;
+  color: rgba(33, 33, 33, 0.7);
 }
 
 .modal__submit-btn {
@@ -59,6 +60,13 @@
 
 .modal__input {
   padding: 16px 12px;
+  border: 1px solid rgba(33,33,33,0.4);
+  border-radius: 8px;
+  color: rgba(33, 33, 33, 1);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+
 }
 
 @media screen and (max-width: 627px){

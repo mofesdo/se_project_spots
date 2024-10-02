@@ -26,11 +26,19 @@ const initialCards = [
 ];
 
 const profileEditBtn = document.querySelector(".profile__edit-btn");
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
 
 const editModal = document.querySelector("#edit-profile-modal");
 const editModalCloseBtn = editModal.querySelector(".modal__close-btn");
+const editModalNameInput = editModal.querySelector("#profile-name-input");
+const editModalDescriptionInput = editModal.querySelector("#profile-description-input");
 
+console.log(profileName);
+console.log(profileDescription);
 function openModal(){
+  editModalNameInput.value = profileName.textContent;
+  editModalDescriptionInput.value = profileDescription.textContent;
   editModal.classList.add("modal__opened");
 }
 function closeModal(){

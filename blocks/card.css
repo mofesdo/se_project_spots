@@ -26,6 +26,14 @@
   opacity: 1;
   cursor: pointer;
 }
+
+.card__like-btn_liked{
+  background-image: url(../images/liked.svg);
+  opacity: 1;
+}
+.card__like-btn_liked:hover{
+  background-image: url(../images/likedHover.svg);
+}
 .card__title {
   margin: 12px auto 0 0;
   padding: 0 0 4px;

@@ -60,7 +60,7 @@ function getCardElement(data) {
   const cardNameEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
-  //todo select the delete button
+  const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
 
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
@@ -70,9 +70,9 @@ function getCardElement(data) {
     cardLikeBtn.classList.toggle("card__like-btn_liked");
   });
 
-  //set the listener on delete button
-  //the handler should remove the card from the dom (see chapter 4)
-  //style delete button hover (change image)
+  cardDeleteBtn.addEventListener("click", () => {
+    cardElement.remove();
+  })
   
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);

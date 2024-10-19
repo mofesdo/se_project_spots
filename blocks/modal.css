@@ -76,7 +76,6 @@
   top: 0;
   right: -52.5px;
   opacity: 1;
-  
 }
 .modal__close-btn:hover {
   opacity: 1;
@@ -152,5 +151,15 @@
     .modal__input{
         font-size: 16px;
     }
-
+    .modal__container_type_preview{
+      margin: 0 16px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    .modal__close_type_preview{
+      position: relative;
+      margin: 0 0 8px 0px;
+    }
 }

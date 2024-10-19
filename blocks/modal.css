@@ -27,6 +27,14 @@
   border-radius: 8px;
 }
 
+.modal__container_type_preview{
+  padding: 0;
+  
+}
+.modal__image{
+  width: 100%;
+}
+
 .modal__close-btn {
   position: absolute;
   top: 32;
@@ -37,6 +45,9 @@
   background-size: cover;
   border: none;
   padding: 0;
+}
+.modal__close_type_preview{
+  
 }
 
 .modal__title {

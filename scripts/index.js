@@ -93,7 +93,7 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 function handleEditFormSubmit(evt) {
-  // Prevent default browser behavior, see explanation below.
+  // Prevent default browser behavior
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;

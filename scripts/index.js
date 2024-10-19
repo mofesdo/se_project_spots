@@ -44,6 +44,10 @@ const cardModalCloseBtn = cardModal.querySelector(".modal__close-btn");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImageEl = previewModal.querySelector(".modal__image");
+const previewModalTitleEl = previewModal.querySelector(".modal__title");
+
 const cardTemplate = document.querySelector("#card__template");
 const cardsList = document.querySelector(".cards__list");
 
@@ -69,6 +73,12 @@ function getCardElement(data) {
   //the handler should remove the card from the dom (see chapter 4)
   //style delete button hover (change image)
   
+  cardImageEl.addEventListener("click", () => {
+    openModal(previewModal);
+    previewModalTitleEl.textContent = data.name;
+    previewModalImageEl.src = data.link;
+    previewModalImageEl.alt = data.name;
+  });
   return cardElement;
 }
 function openModal(modal) {

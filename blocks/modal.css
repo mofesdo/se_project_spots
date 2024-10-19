@@ -60,7 +60,10 @@
 .modal__close-btn:hover {
   opacity: 1;
 }
+.modal__close_type_preview:hover{
+  opacity: .4;
 
+}
 
 .modal__title {
   margin: 0 0 32px;

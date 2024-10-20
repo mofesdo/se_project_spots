@@ -71,7 +71,7 @@
   border: none;
   padding: 0;
 }
-.modal__close_type_preview {
+.modal__close-btn-preview {
   background: url(/images/close-light.png);
   top: 0;
   right: -52.5px;
@@ -80,7 +80,7 @@
 .modal__close-btn:hover {
   opacity: 1;
 }
-.modal__close_type_preview:hover {
+.modal__close-btn-preview:hover {
   opacity: 0.4;
 }
 
@@ -154,7 +154,7 @@
     padding: 0 6px;
     width: 100%;
   }
-  .modal__close_type_preview {
+  .modal__close-btn-preview {
     position: absolute;
     top: -48px;
     right: 0px;

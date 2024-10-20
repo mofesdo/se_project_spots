@@ -79,6 +79,17 @@
     width: 20px;
     height: 18px;
   }
+  .card__like-btn_liked {
+    background-image: url(../images/liked-sm.svg);
+    opacity: 1;
+    width: 20px;
+    height: 18px;
+  }
+  .card__like-btn_liked:hover {
+    background-image: url(../images/likedHover-sm.svg);
+    width: 20px;
+    height: 18px;
+  }
   .card__delete-btn {
     top: 50px;
     right: -246px;

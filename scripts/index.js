@@ -80,9 +80,6 @@ function getCardElement(data) {
     previewModalImageEl.src = data.link;
     previewModalImageEl.alt = data.name;
   });
-  previewModalCloseEl.addEventListener("click", () => {
-    closeModal(previewModal);
-  });
 
   return cardElement;
 }
@@ -104,6 +101,9 @@ function handleAddCardSubmit(evt){
   const inputValues = {name:cardNameInput.value, link: cardLinkInput.value};
   const cardEl = getCardElement(inputValues);
   cardsList.prepend(cardEl);
+  cardNameInput.value = "";
+  cardLinkInput.value = "";
+
   
   closeModal(cardModal);
 }
@@ -121,6 +121,9 @@ cardModalBtn.addEventListener("click", () => {
 });
 cardModalCloseBtn.addEventListener("click", () =>{
   closeModal(cardModal);
+});
+previewModalCloseEl.addEventListener("click", () => {
+  closeModal(previewModal);
 });
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);

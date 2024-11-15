@@ -7,7 +7,6 @@ const settings = {
   errorClass: "modal__error_visible"
 }
 
-//TODO - ADD CORRESPONDING IDs TO INPUT ELEMENTS TO CORRECTLY SHOW ERROR
 const showInputError = (formEL, inputEL, errorMsg) => {
     const errorMsgEl = formEL.querySelector(`#${inputEL.id}-error`);
     errorMsgEl.textContent = errorMsg;

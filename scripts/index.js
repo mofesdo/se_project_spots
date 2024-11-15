@@ -87,9 +87,15 @@ function getCardElement(data) {
 }
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  modal.addEventListener("click", closeModalByOverlay);
 }
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+}
+function closeModalByOverlay(evt) {
+  if(evt.target.classList.contains("modal")){
+    closeModal(evt.target)
+  }
 }
 function handleEditFormSubmit(evt) {
   // Prevent default browser behavior

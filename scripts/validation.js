@@ -2,10 +2,12 @@
 const showInputError = (formEL, inputEL, errorMsg) => {
     const errorMsgEl = formEL.querySelector(`#${inputEL.id}-error`);
     errorMsgEl.textContent = errorMsg;
+    inputEL.classList.add("modal__input_type_error");
 };
 const hideInputError = (formEL, inputEL) => {
     const errorMsgEl = formEL.querySelector(`#${inputEL.id}-error`);
     errorMsgEl.textContent = "";
+    inputEL.classList.remove("modal__input_type_error");
 };
 const checkInputValidity = (formEl, inputEl) => {
     if (!inputEl.validity.valid) {

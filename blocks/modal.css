@@ -120,6 +120,10 @@
   margin: 8px 0 0;
   padding: 16px 12px;
 }
+
+.modal__input_type_error{
+  border: 1px solid rgba(255, 0, 0, .6);
+}
 .modal__error{
   display: block;
   color:red; 

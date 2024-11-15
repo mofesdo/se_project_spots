@@ -7,21 +7,21 @@ const settings = {
   errorClass: "modal__error_visible"
 }
 
-const showInputError = (formEL, inputEL, errorMsg) => {
+const showInputError = (formEL, inputEL, errorMsg, config) => {
     const errorMsgEl = formEL.querySelector(`#${inputEL.id}-error`);
     errorMsgEl.textContent = errorMsg;
-    inputEL.classList.add("modal__input_type_error");
+    inputEL.classList.add(config.inputErrorClass);
 };
-const hideInputError = (formEL, inputEL) => {
+const hideInputError = (formEL, inputEL, config) => {
     const errorMsgEl = formEL.querySelector(`#${inputEL.id}-error`);
     errorMsgEl.textContent = "";
-    inputEL.classList.remove("modal__input_type_error");
+    inputEL.classList.remove(config.inputErrorClass);
 };
-const checkInputValidity = (formEl, inputEl) => {
+const checkInputValidity = (formEl, inputEl, config) => {
     if (!inputEl.validity.valid) {
-        showInputError(formEl, inputEl, inputEl.validationMessage);
+        showInputError(formEl, inputEl, inputEl.validationMessage, config);
       } else {
-        hideInputError(formEl, inputEl);
+        hideInputError(formEl, inputEl, config);
       }
 }
 const hasInvalidInput = (inputList) => {
@@ -29,15 +29,14 @@ const hasInvalidInput = (inputList) => {
     return !input.validity.valid;
   });
 };
-const toggleButtonState = (inputList, buttonEl) => {
+const toggleButtonState = (inputList, buttonEl, config) => {
   if(hasInvalidInput(inputList)){
     disableButton(buttonEl);
-    buttonEl.classList.add("modal__button_disabled");
-    //dont forget the css
+    buttonEl.classList.add(config.inactiveButtonClass);
   }
   else{
     buttonEl.disabled = false;
-    buttonEl.classList.remove("modal__button_disabled");
+    buttonEl.classList.remove(config.inactiveButtonClass);
   }
 };
 
@@ -46,12 +45,11 @@ const disableButton = (button) => {
 };
 
 //optional
-const resetValidation = (formEl, inputList) => {
+const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((input) => {
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, config);
   })
 };
-//todo use the settings object in all functions instead of hard-coded strings
 const setEventListeners = (formEl, config) => {
     const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
     const buttonElement = formEl.querySelector(config.submitButtonSelector);

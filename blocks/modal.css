@@ -92,9 +92,7 @@
 }
 
 .modal__label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: block;
   margin: 0 0 32px;
   color: rgba(33, 33, 33, 0.7);
   font-weight: 500;
@@ -112,13 +110,19 @@
 }
 
 .modal__input {
-  padding: 16px 12px;
+  width: 100%;
   border: 1px solid rgba(33, 33, 33, 0.4);
   border-radius: 8px;
   color: rgba(33, 33, 33, 1);
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
+  margin: 8px 0 0;
+  padding: 16px 12px;
+}
+.modal__error{
+  display: block;
+  color:red; 
 }
 
 @media screen and (max-width: 627px) {

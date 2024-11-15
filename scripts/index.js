@@ -1,3 +1,4 @@
+//TODO - PASS SETTINGS OBJECT TO THE VALIDATION FUNCTIONS THAT ARE CALLED IN THIS FILE
 const initialCards = [
   {
     name: "Val Thorens",

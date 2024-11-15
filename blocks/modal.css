@@ -83,6 +83,9 @@
 .modal__close-btn-preview:hover {
   opacity: 0.4;
 }
+.modal__button_disabled{
+  opacity: 0.5;
+}
 
 .modal__title {
   margin: 0 0 32px;
@@ -126,8 +129,11 @@
 }
 .modal__error{
   display: block;
-  color:red; 
-  /* TODO - USE CORRECT COLOR AND FONT SIZES */
+  color: rgba(255, 0, 0, 0.7);
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 17.6px;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 627px) {

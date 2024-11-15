@@ -32,12 +32,12 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonEl) => {
   if(hasInvalidInput(inputList)){
     disableButton(buttonEl);
-    //add a modifier class to the buttonEl to make it grey
+    buttonEl.classList.add("modal__button_disabled");
     //dont forget the css
   }
   else{
     buttonEl.disabled = false;
-    //remove the disabled class
+    buttonEl.classList.remove("modal__button_disabled");
   }
 };
 

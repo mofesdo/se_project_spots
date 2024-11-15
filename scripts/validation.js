@@ -1,9 +1,10 @@
+//TODO - ADD CORRESPONDING IDs TO INPUT ELEMENTS TO CORRECTLY SHOW ERROR
 const showInputError = (formEL, inputEL, errorMsg) => {
-    const errorMsgEl = document.querySelector(`#${inputEL.id}-error`);
+    const errorMsgEl = formEL.querySelector(`#${inputEL.id}-error`);
     errorMsgEl.textContent = errorMsg;
 };
 const hideInputError = (formEL, inputEL) => {
-    const errorMsgEl = document.querySelector(`#${inputEL.id}-error`);
+    const errorMsgEl = formEL.querySelector(`#${inputEL.id}-error`);
     errorMsgEl.textContent = "";
 };
 const checkInputValidity = (formEl, inputEl) => {

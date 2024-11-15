@@ -127,6 +127,7 @@
 .modal__error{
   display: block;
   color:red; 
+  /* TODO - USE CORRECT COLOR AND FONT SIZES */
 }
 
 @media screen and (max-width: 627px) {

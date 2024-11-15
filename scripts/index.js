@@ -1,4 +1,3 @@
-//TODO - PASS SETTINGS OBJECT TO THE VALIDATION FUNCTIONS THAT ARE CALLED IN THIS FILE
 const initialCards = [
   {
     name: "Val Thorens",
@@ -74,8 +73,8 @@ function getCardElement(data) {
 
   cardDeleteBtn.addEventListener("click", () => {
     cardElement.remove();
-  })
-  
+  });
+
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
     previewModalTitleEl.textContent = data.name;
@@ -95,12 +94,12 @@ function closeModal(modal) {
   document.removeEventListener("keydown", closeModalByEsc);
 }
 function closeModalByOverlay(evt) {
-  if(evt.target.classList.contains("modal")){
-    closeModal(evt.target)
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
   }
 }
 function closeModalByEsc(evt) {
-  if(evt.key === 'Escape'){
+  if (evt.key === "Escape") {
     const modalOpened = document.querySelector(".modal_opened");
     closeModal(modalOpened);
   }
@@ -112,9 +111,9 @@ function handleEditFormSubmit(evt) {
   profileDescription.textContent = editModalDescriptionInput.value;
   closeModal(editModal);
 }
-function handleAddCardSubmit(evt){
+function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const inputValues = {name:cardNameInput.value, link: cardLinkInput.value};
+  const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardEl = getCardElement(inputValues);
   cardsList.prepend(cardEl);
   evt.target.reset();
@@ -125,16 +124,20 @@ function handleAddCardSubmit(evt){
 profileEditBtn.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  resetValidation(editFormElement, [editModalNameInput, editModalDescriptionInput], settings);
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   openModal(editModal);
 });
-editModalCloseBtn.addEventListener("click", () =>{
+editModalCloseBtn.addEventListener("click", () => {
   closeModal(editModal);
 });
 cardModalBtn.addEventListener("click", () => {
   openModal(cardModal);
 });
-cardModalCloseBtn.addEventListener("click", () =>{
+cardModalCloseBtn.addEventListener("click", () => {
   closeModal(cardModal);
 });
 previewModalCloseEl.addEventListener("click", () => {
@@ -143,9 +146,7 @@ previewModalCloseEl.addEventListener("click", () => {
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
 
-initialCards.forEach((item) =>{
+initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
 });
-
-

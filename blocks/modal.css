@@ -83,7 +83,7 @@
 .modal__close-btn-preview:hover {
   opacity: 0.4;
 }
-.modal__button_disabled{
+.modal__button_disabled {
   opacity: 0.5;
 }
 
@@ -124,10 +124,10 @@
   padding: 16px 12px;
 }
 
-.modal__input_type_error{
-  border: 1px solid rgba(255, 0, 0, .6);
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
 }
-.modal__error{
+.modal__error {
   display: block;
   color: rgba(255, 0, 0, 0.7);
   margin: 8px 0 0;

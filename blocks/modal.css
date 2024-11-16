@@ -79,13 +79,13 @@
 }
 .modal__close-btn:hover {
   opacity: 1;
+  cursor: pointer;
 }
 .modal__close-btn-preview:hover {
   opacity: 0.4;
+  cursor: pointer;
 }
-.modal__button_disabled {
-  opacity: 0.5;
-}
+
 
 .modal__title {
   margin: 0 0 32px;
@@ -111,7 +111,12 @@
   border: none;
   border-radius: 8px;
 }
-
+.modal__submit-btn:hover{
+  cursor: pointer
+}
+.modal__submit-btn_disabled {
+  opacity: 0.5;
+}
 .modal__input {
   width: 100%;
   border: 1px solid rgba(33, 33, 33, 0.4);

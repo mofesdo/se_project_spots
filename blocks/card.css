@@ -33,6 +33,7 @@
 }
 .card__like-btn_liked:hover {
   background-image: url(../images/likedHover.svg);
+  cursor: pointer;
 }
 
 .card__delete-btn {
@@ -48,6 +49,7 @@
 }
 .card__delete-btn:hover {
   background-image: url(../images/trash-hover.png);
+  cursor: pointer;
 }
 .card__title {
   margin: 12px auto 0 0;
@@ -76,11 +78,13 @@
   }
   .card__like-btn {
     background-image: url(../images/heart-sm.svg);
+    background-repeat: no-repeat;
     width: 20px;
     height: 18px;
   }
   .card__like-btn_liked {
     background-image: url(../images/liked-sm.svg);
+    background-repeat: no-repeat;
     opacity: 1;
     width: 20px;
     height: 18px;

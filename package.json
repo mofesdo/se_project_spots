@@ -29,7 +29,8 @@
     "webpack-dev-server": "4.9.3"
   },
   "dependencies": {
-    "core-js": "3.23.5"
+    "core-js": "3.23.5",
+    "se_project_spots": "file:"
   },
   "bugs": {
     "url": "https://github.com/mofesdo/se_project_spots/issues"

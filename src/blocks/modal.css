@@ -37,7 +37,7 @@
   width: auto;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 .modal__container_type_preview p {
   padding: 0;
@@ -66,13 +66,13 @@
   right: 50px;
   width: 40px;
   height: 40px;
-  background: url(/images/close.svg);
+  background: url(../images/close.svg);
   background-size: cover;
   border: none;
   padding: 0;
 }
 .modal__close-btn-preview {
-  background: url(/images/close-light.png);
+  background: url(../images/close-light.png);
   top: 0;
   right: -52.5px;
   opacity: 1;

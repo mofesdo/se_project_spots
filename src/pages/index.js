@@ -1,4 +1,18 @@
-import {enableValidation, settings, resetValidation,disableButton} from "./validation.js";
+import "./index.css";
+import {enableValidation, settings, resetValidation,disableButton} from "../scripts/validation.js";
+
+// Import the image
+import logo from "../images/logo.svg";
+import avatar from "../images/avatar.jpg";
+
+// Select the element and set the src
+const headerLogo = document.getElementById("header__logo");
+headerLogo.src = logo;
+
+const profileAvatar = document.getElementById("profile__avatar");
+profileAvatar.src = avatar;
+
+
 const initialCards = [
   {
     name: "Val Thorens",

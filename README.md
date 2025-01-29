@@ -25,8 +25,8 @@ Spots is a website designed to showcase art gallery pieces. Spots uses dynamic r
 * [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
   
 **Images**  
-![Desktop View](./images/spots-desktop-view.jpg)
-![Mobile View](./images/spots-mobile-view.jpg)
+![Desktop View](./src/images/spots-desktop-view.jpg)
+![Mobile View](./src/images/spots-mobile-view.jpg)
   
 **[View Spots Live!](https://mofesdo.github.io/se_project_spots/)**
 

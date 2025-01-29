@@ -1,6 +1,7 @@
 //138fe482-aa90-46db-b20b-613bcdba9e47
 import "./index.css";
 import {enableValidation, settings, resetValidation,disableButton} from "../scripts/validation.js";
+import Api from "../scripts/Api.js";
 
 // Import the image
 import logo from "../images/logo.svg";
@@ -40,6 +41,19 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "138fe482-aa90-46db-b20b-613bcdba9e47",
+    "Content-Type": "application/json"
+  }
+});
+
+api.getInitialCards()
+  .then((cards)=> {
+    console.log(cards);
+  })
 
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");

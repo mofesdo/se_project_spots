@@ -1,7 +1,12 @@
 //138fe482-aa90-46db-b20b-613bcdba9e47
 import "./index.css";
-import {enableValidation, settings, resetValidation,disableButton} from "../scripts/validation.js";
-import Api from "../scripts/Api.js";
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+  disableButton,
+} from "../scripts/validation.js";
+import Api from "../utils/Api.js";
 
 // Import the image
 import logo from "../images/logo.svg";
@@ -13,7 +18,6 @@ headerLogo.src = logo;
 
 const profileAvatar = document.getElementById("profile__avatar");
 profileAvatar.src = avatar;
-
 
 // const initialCards = [
 //   {
@@ -46,18 +50,22 @@ const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "138fe482-aa90-46db-b20b-613bcdba9e47",
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
 
-api.getInitialCards()
-  .then((cards)=> {
+api
+  .getInitialCards()
+  .then((cards) => {
     console.log(cards);
     cards.forEach((item) => {
       const cardElement = getCardElement(item);
       cardsList.prepend(cardElement);
     });
   })
+  .catch((err) => {
+    console.log(err);
+  });
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
@@ -179,6 +187,5 @@ previewModalCloseEl.addEventListener("click", () => {
 });
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
-
 
 enableValidation(settings);

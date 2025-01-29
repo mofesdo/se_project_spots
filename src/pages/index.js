@@ -1,3 +1,4 @@
+//138fe482-aa90-46db-b20b-613bcdba9e47
 import "./index.css";
 import {enableValidation, settings, resetValidation,disableButton} from "../scripts/validation.js";
 

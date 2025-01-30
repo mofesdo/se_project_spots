@@ -53,19 +53,14 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
-api
-  .getInitialCards()
-  .then((cards) => {
-    console.log(cards);
-    cards.forEach((item) => {
-      const cardElement = getCardElement(item);
-      cardsList.prepend(cardElement);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  api.getAppInfo()
+    .then(([cards]) =>{
+      console.log(cards);
+      cards.forEach((item) => {
+        const cardElement = getCardElement(item);
+        cardsList.prepend(cardElement);
+      });
+    })
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");

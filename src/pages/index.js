@@ -184,12 +184,17 @@ function handleEditFormSubmit(evt) {
 }
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
-  const cardEl = getCardElement(inputValues);
-  cardsList.prepend(cardEl);
-  evt.target.reset();
-  disableButton(cardSubmitBtn, settings);
-  closeModal(cardModal);
+  api
+    .addCard({name: cardNameInput.value, link: cardLinkInput.value})
+    .then((data)=>{
+      const cardEl = getCardElement(data);
+      //prepend or append? Personally i like append but I'll keep as is
+      cardsList.prepend(cardEl);
+      evt.target.reset();
+      disableButton(cardSubmitBtn, settings);
+      closeModal(cardModal);
+    })
+    .catch((err)=> console.log(err));
 }
 function handleAvatarSubmit(evt) {
   evt.preventDefault();

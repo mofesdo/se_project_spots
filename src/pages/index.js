@@ -53,13 +53,24 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-  api.getAppInfo()
-    .then(([cards]) =>{
+//destructure the second item in the callback of the .then()
+  api
+    .getAppInfo()
+    .then(([cards, users]) =>{
       console.log(cards);
+      console.log(users);
       cards.forEach((item) => {
         const cardElement = getCardElement(item);
         cardsList.prepend(cardElement);
       });
+
+      //handle the users information
+      //set the src of avatar img
+      profileAvatar.src = users[0].avatar;
+      console.log(profileAvatar.src);
+      document.querySelector(".profile__name").textContent = users[0].name;
+      document.querySelector(".profile__description").textContent = users[0].about;
+      //set textContent of both the text elements
     })
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");

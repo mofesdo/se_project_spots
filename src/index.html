@@ -16,11 +16,17 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            id="profile__avatar"
-            alt="User's Avatar"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img class="profile__pencil-icon" src=
+              <%=require('./images/pencil-white.svg')%> alt="pencil icon">
+            </button>
+            <img
+              id="profile__avatar"
+              alt="User's Avatar"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -138,5 +144,65 @@
         <p class="modal__title"></p>
       </div>
     </div>
+          <div class="modal" id="add-card-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn"></button>
+          <h2 class="modal__title">New post</h2>
+          <form
+            name="edit-profile"
+            class="modal__form"
+            id="add-card-form"
+            novalidate
+          >
+            <label for="add-card-link-input" class="modal__label">
+              Image Link
+              <input
+                id="add-card-link-input"
+                type="url"
+                class="modal__input"
+                placeholder="Place a link to the picture"
+                name="link"
+                required
+              />
+              <span id="add-card-link-input-error" class="modal__error"></span>
+            </label>
+            <label for="add-card-name-input" class="modal__label">
+              Caption
+              <input
+                id="add-card-name-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your caption"
+                name="name"
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span id="add-card-name-input-error" class="modal__error"></span>
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal" id="avatar-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn"></button>
+          <h2 class="modal__title">Edit avatar</h2>
+          <form name="edit-avatar-form" class="modal__form" novalidate>
+            <label for="profile-avatar-input" class="modal__label">
+              Avatar
+              <input
+                id="profile-avatar-input"
+                class="modal__input"
+                placeholder="avatar goes here"
+                name="avatar"
+                required
+              />
+              <span id="profile-avatar-input-error" class="modal__error"></span>
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
   </body>
 </html>

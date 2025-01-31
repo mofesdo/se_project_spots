@@ -76,6 +76,13 @@ const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const cardModalBtn = document.querySelector(".profile__add-btn");
+const avatarModalBtn = document.querySelector(".profile__avatar-btn");
+
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
+const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 const editModal = document.querySelector("#edit-profile-modal");
 const editFormElement = editModal.querySelector(".modal__form");
@@ -173,6 +180,14 @@ function handleAddCardSubmit(evt) {
   disableButton(cardSubmitBtn, settings);
   closeModal(cardModal);
 }
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  api.editAvatarInfo(avatarInput.value)
+    .then((data)=>{
+      profileAvatar.src = data.avatar;
+    })
+    .catch((err)=> console.log(err));
+}
 
 profileEditBtn.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
@@ -196,7 +211,16 @@ cardModalCloseBtn.addEventListener("click", () => {
 previewModalCloseEl.addEventListener("click", () => {
   closeModal(previewModal);
 });
+
+avatarModalBtn.addEventListener("click", () => {
+  openModal(avatarModal);
+});
+avatarModalCloseBtn.addEventListener("click", () => {
+  closeModal(avatarModal);
+});
+
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
+avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 enableValidation(settings);

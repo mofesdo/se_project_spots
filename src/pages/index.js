@@ -129,16 +129,17 @@ function getCardElement(data) {
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
 
+  //TODO if the card is liked. set the active class on the card;
+  if(data.isLiked == true){
+    cardLikeBtn.classList.add("card__like-btn_liked");
+  }
+
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-btn_liked");
-  });
-
+  cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
   cardDeleteBtn.addEventListener("click", (evt)=> handleDeleteCard(cardElement, data._id));
-
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
     previewModalTitleEl.textContent = data.name;
@@ -199,6 +200,15 @@ function handleDeleteCard(cardElement, cardId){
     selectedCard = cardElement;
     selectedCardId = cardId;
     openModal(deleteModal);
+}
+function handleLike(evt, cardId){
+  const isLiked = evt.target.classList.contains("card__like-btn_liked");
+  api
+    .toggleLike(cardId, isLiked)
+    .then((data)=>{
+      evt.target.classList.toggle("card__like-btn_liked");
+    })
+    .catch((err)=> console.log(err));
 }
 
 // The submission handler makes use of the selectedCard and selectedCardId

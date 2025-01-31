@@ -92,6 +92,19 @@ class Api {
       Promise.reject(`Error: ${res.status}`);
     });
   }
+  toggleLike(id, isLiked){
+    const method = isLiked ? "DELETE" : "PUT";
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: method,
+      headers: this._headers,
+      // Send the data in the body as a JSON string.
+    }).then((res) => {
+      if(res.ok){
+        return res.json();
+      }
+      Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
 
 // export the class

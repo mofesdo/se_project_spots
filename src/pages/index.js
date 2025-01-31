@@ -72,18 +72,25 @@ const api = new Api({
       document.querySelector(".profile__description").textContent = users.about;
       
     })
+
+//Profile Elements
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const cardModalBtn = document.querySelector(".profile__add-btn");
 const avatarModalBtn = document.querySelector(".profile__avatar-btn");
 
+//Avatar Modal
 const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = avatarModal.querySelector(".modal__form");
 const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
+//Delete Form Elements
+const deleteModal = document.querySelector("#delete-modal");
+
+//Edit Profile Modal
 const editModal = document.querySelector("#edit-profile-modal");
 const editFormElement = editModal.querySelector(".modal__form");
 const editModalCloseBtn = editModal.querySelector(".modal__close-btn");
@@ -92,6 +99,7 @@ const editModalDescriptionInput = editModal.querySelector(
   "#profile-description-input"
 );
 
+//Add Card Modal
 const cardModal = document.querySelector("#add-card-modal");
 const cardForm = cardModal.querySelector(".modal__form");
 const cardSubmitBtn = cardModal.querySelector(".modal__submit-btn");
@@ -99,6 +107,7 @@ const cardModalCloseBtn = cardModal.querySelector(".modal__close-btn");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
+//Preview Card Modal
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalTitleEl = previewModal.querySelector(".modal__title");
@@ -126,7 +135,9 @@ function getCardElement(data) {
   });
 
   cardDeleteBtn.addEventListener("click", () => {
-    cardElement.remove();
+    //cardElement.remove();
+    //open modal here
+    openModal(deleteModal);
   });
 
   cardImageEl.addEventListener("click", () => {

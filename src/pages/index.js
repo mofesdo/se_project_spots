@@ -17,7 +17,8 @@ const headerLogo = document.getElementById("header__logo");
 headerLogo.src = logo;
 
 const profileAvatar = document.getElementById("profile__avatar");
-//profileAvatar.src = avatar;
+let selectedCard;
+let selectedCardId;
 
 // const initialCards = [
 //   {
@@ -89,6 +90,8 @@ const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 //Delete Form Elements
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__form");
+
 
 //Edit Profile Modal
 const editModal = document.querySelector("#edit-profile-modal");
@@ -134,11 +137,7 @@ function getCardElement(data) {
     cardLikeBtn.classList.toggle("card__like-btn_liked");
   });
 
-  cardDeleteBtn.addEventListener("click", () => {
-    //cardElement.remove();
-    //open modal here
-    openModal(deleteModal);
-  });
+  cardDeleteBtn.addEventListener("click", (evt)=> handleDeleteCard(cardElement, data._id));
 
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
@@ -196,6 +195,27 @@ function handleAddCardSubmit(evt) {
     })
     .catch((err)=> console.log(err));
 }
+function handleDeleteCard(cardElement, cardId){
+    selectedCard = cardElement;
+    selectedCardId = cardId;
+    openModal(deleteModal);
+}
+
+// The submission handler makes use of the selectedCard and selectedCardId
+// variables to target the correct card.
+function handleDeleteSubmit(evt){
+  evt.preventDefault();
+  api
+    .deleteCard(selectedCardId) // pass the ID the the api function
+    .then(() => {
+      // remove the card from the DOM and then close modal
+      selectedCard.remove();
+      closeModal(deleteModal);
+      
+    })
+    .catch(console.error);
+}
+
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   api.editAvatarInfo(avatarInput.value)
@@ -238,5 +258,6 @@ avatarModalCloseBtn.addEventListener("click", () => {
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
 avatarForm.addEventListener("submit", handleAvatarSubmit);
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 enableValidation(settings);

@@ -80,6 +80,18 @@ class Api {
       Promise.reject(`Error: ${res.status}`);
     });
   }
+  deleteCard(id){
+    return fetch(`${this._baseUrl}/cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+      // Send the data in the body as a JSON string.
+    }).then((res) => {
+      if(res.ok){
+        return res.json();
+      }
+      Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
 
 // export the class

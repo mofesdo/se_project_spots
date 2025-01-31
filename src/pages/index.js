@@ -17,7 +17,7 @@ const headerLogo = document.getElementById("header__logo");
 headerLogo.src = logo;
 
 const profileAvatar = document.getElementById("profile__avatar");
-profileAvatar.src = avatar;
+//profileAvatar.src = avatar;
 
 // const initialCards = [
 //   {
@@ -66,11 +66,11 @@ const api = new Api({
 
       //handle the users information
       //set the src of avatar img
-      profileAvatar.src = users[0].avatar;
-      console.log(profileAvatar.src);
-      document.querySelector(".profile__name").textContent = users[0].name;
-      document.querySelector(".profile__description").textContent = users[0].about;
+      profileAvatar.src = users.avatar;
       //set textContent of both the text elements
+      document.querySelector(".profile__name").textContent = users.name;
+      document.querySelector(".profile__description").textContent = users.about;
+      
     })
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
@@ -155,9 +155,14 @@ function closeModalByEsc(evt) {
 function handleEditFormSubmit(evt) {
   // Prevent default browser behavior
   evt.preventDefault();
-  profileName.textContent = editModalNameInput.value;
-  profileDescription.textContent = editModalDescriptionInput.value;
-  closeModal(editModal);
+  api
+    .editUserInfo({name: editModalNameInput.value, about: editModalDescriptionInput.value})
+    .then((data)=>{
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      closeModal(editModal);
+    })
+    .catch((err)=> console.log(err));
 }
 function handleAddCardSubmit(evt) {
   evt.preventDefault();

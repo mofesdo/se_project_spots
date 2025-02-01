@@ -5,7 +5,7 @@ class Api {
     this._headers = headers;
   }
 
-  getAppInfo(){
+  getAppInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
   getInitialCards() {
@@ -19,7 +19,7 @@ class Api {
     });
   }
   // other methods for working with the API
-  getUserInfo(){
+  getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     }).then((res) => {
@@ -42,7 +42,7 @@ class Api {
         about,
       }),
     }).then((res) => {
-      if(res.ok){
+      if (res.ok) {
         return res.json();
       }
       Promise.reject(`Error: ${res.status}`);
@@ -57,14 +57,14 @@ class Api {
         avatar,
       }),
     }).then((res) => {
-      if(res.ok){
+      if (res.ok) {
         return res.json();
       }
       Promise.reject(`Error: ${res.status}`);
     });
   }
   //Implement POST/cards
-  addCard({name, link}){
+  addCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -74,32 +74,32 @@ class Api {
         link,
       }),
     }).then((res) => {
-      if(res.ok){
+      if (res.ok) {
         return res.json();
       }
       Promise.reject(`Error: ${res.status}`);
     });
   }
-  deleteCard(id){
+  deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
       // Send the data in the body as a JSON string.
     }).then((res) => {
-      if(res.ok){
+      if (res.ok) {
         return res.json();
       }
       Promise.reject(`Error: ${res.status}`);
     });
   }
-  toggleLike(id, isLiked){
+  toggleLike(id, isLiked) {
     const method = isLiked ? "DELETE" : "PUT";
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: method,
       headers: this._headers,
       // Send the data in the body as a JSON string.
     }).then((res) => {
-      if(res.ok){
+      if (res.ok) {
         return res.json();
       }
       Promise.reject(`Error: ${res.status}`);

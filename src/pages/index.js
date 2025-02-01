@@ -29,24 +29,21 @@ const api = new Api({
   },
 });
 //destructure the second item in the callback of the .then()
-  api
-    .getAppInfo()
-    .then(([cards, users]) =>{
-      console.log(cards);
-      console.log(users);
-      cards.forEach((item) => {
-        const cardElement = getCardElement(item);
-        cardsList.prepend(cardElement);
-      });
+api.getAppInfo().then(([cards, users]) => {
+  console.log(cards);
+  console.log(users);
+  cards.forEach((item) => {
+    const cardElement = getCardElement(item);
+    cardsList.prepend(cardElement);
+  });
 
-      //handle the users information
-      //set the src of avatar img
-      profileAvatar.src = users.avatar;
-      //set textContent of both the text elements
-      document.querySelector(".profile__name").textContent = users.name;
-      document.querySelector(".profile__description").textContent = users.about;
-      
-    })
+  //handle the users information
+  //set the src of avatar img
+  profileAvatar.src = users.avatar;
+  //set textContent of both the text elements
+  document.querySelector(".profile__name").textContent = users.name;
+  document.querySelector(".profile__description").textContent = users.about;
+});
 
 //Profile Elements
 const profileEditBtn = document.querySelector(".profile__edit-btn");
@@ -67,7 +64,6 @@ const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
 const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
 const deleteCancelBtn = deleteModal.querySelectorAll(".modal__submit-btn")[1];
-
 
 //Edit Profile Modal
 const editModal = document.querySelector("#edit-profile-modal");
@@ -105,7 +101,7 @@ function getCardElement(data) {
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
 
-  if(data.isLiked == true){
+  if (data.isLiked == true) {
     cardLikeBtn.classList.add("card__like-btn_liked");
   }
 
@@ -114,7 +110,9 @@ function getCardElement(data) {
   cardImageEl.alt = data.name;
 
   cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
-  cardDeleteBtn.addEventListener("click", (evt)=> handleDeleteCard(cardElement, data._id));
+  cardDeleteBtn.addEventListener("click", (evt) =>
+    handleDeleteCard(cardElement, data._id)
+  );
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
     previewModalTitleEl.textContent = data.name;
@@ -153,14 +151,17 @@ function handleEditFormSubmit(evt) {
   setButtonText(submitBtn, true);
 
   api
-    .editUserInfo({name: editModalNameInput.value, about: editModalDescriptionInput.value})
-    .then((data)=>{
+    .editUserInfo({
+      name: editModalNameInput.value,
+      about: editModalDescriptionInput.value,
+    })
+    .then((data) => {
       profileName.textContent = data.name;
       profileDescription.textContent = data.about;
       closeModal(editModal);
     })
-    .catch((err)=> console.log(err))
-    .finally(()=>{
+    .catch((err) => console.log(err))
+    .finally(() => {
       //change text content back to save
       setButtonText(submitBtn, false);
     });
@@ -172,8 +173,8 @@ function handleAddCardSubmit(evt) {
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true);
   api
-    .addCard({name: cardNameInput.value, link: cardLinkInput.value})
-    .then((data)=>{
+    .addCard({ name: cardNameInput.value, link: cardLinkInput.value })
+    .then((data) => {
       const cardEl = getCardElement(data);
       //prepend or append? Personally i like append but I'll keep as is
       cardsList.prepend(cardEl);
@@ -181,29 +182,29 @@ function handleAddCardSubmit(evt) {
       disableButton(cardSubmitBtn, settings);
       closeModal(cardModal);
     })
-    .catch((err)=> console.log(err))
-    .finally(()=>{
+    .catch((err) => console.log(err))
+    .finally(() => {
       setButtonText(submitBtn, false);
     });
 }
-function handleDeleteCard(cardElement, cardId){
-    selectedCard = cardElement;
-    selectedCardId = cardId;
-    openModal(deleteModal);
+function handleDeleteCard(cardElement, cardId) {
+  selectedCard = cardElement;
+  selectedCardId = cardId;
+  openModal(deleteModal);
 }
-function handleLike(evt, cardId){
+function handleLike(evt, cardId) {
   const isLiked = evt.target.classList.contains("card__like-btn_liked");
   api
     .toggleLike(cardId, isLiked)
-    .then((data)=>{
+    .then((data) => {
       evt.target.classList.toggle("card__like-btn_liked");
     })
-    .catch((err)=> console.log(err));
+    .catch((err) => console.log(err));
 }
 
 // The submission handler makes use of the selectedCard and selectedCardId
 // variables to target the correct card.
-function handleDeleteSubmit(evt){
+function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true, "Delete", "Deleting...");
@@ -213,10 +214,9 @@ function handleDeleteSubmit(evt){
       // remove the card from the DOM and then close modal
       selectedCard.remove();
       closeModal(deleteModal);
-      
     })
     .catch(console.error)
-    .finally(()=>{
+    .finally(() => {
       setButtonText(submitBtn, false, "Delete", "Deleting...");
     });
 }
@@ -225,15 +225,16 @@ function handleAvatarSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true);
-  api.editAvatarInfo(avatarInput.value)
-    .then((data)=>{
+  api
+    .editAvatarInfo(avatarInput.value)
+    .then((data) => {
       profileAvatar.src = data.avatar;
       evt.target.reset();
       disableButton(avatarSubmitBtn, settings);
       closeModal(avatarModal);
     })
-    .catch((err)=> console.log(err))
-    .finally(()=>{
+    .catch((err) => console.log(err))
+    .finally(() => {
       setButtonText(submitBtn, false);
     });
 }

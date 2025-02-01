@@ -184,6 +184,7 @@
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   .modal__container {
@@ -226,5 +227,20 @@
   .modal__container_type_preview p {
     font-size: 16px;
     line-height: 19.2px;
+  }
+
+  #delete-modal .modal__title{
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 20px;
+  }
+  #delete-modal .modal__form{
+    flex-direction: column;
+    padding: 0 72px;
+    gap: 12px;
+  }
+  #delete-modal .modal__close-btn{
+    top: -56px;
+    right: 0px;
   }
 }

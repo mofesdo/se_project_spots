@@ -25,11 +25,17 @@ visibility:hidden;
 }
 .profile__avatar-btn::after{
   content: "Edit Avatar";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 0 0 0 8px;
 }
 .profile__avatar-container:hover .profile__avatar-btn{
   visibility: visible;
   background: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: rgba(255,255,255,1);
+  border-radius: 8px;
+  cursor: pointer;
 }
 .profile__column {
   display: flex;

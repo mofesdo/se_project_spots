@@ -21,33 +21,6 @@ const profileAvatar = document.getElementById("profile__avatar");
 let selectedCard;
 let selectedCardId;
 
-// const initialCards = [
-//   {
-//     name: "Val Thorens",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-//   },
-//   {
-//     name: "Restaurant terrace",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-//   },
-//   {
-//     name: "An outdoor cafe",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-//   },
-//   {
-//     name: "A very long bridge, over the forest and through the trees",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-//   },
-//   {
-//     name: "Tunnel with morning light",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-//   },
-//   {
-//     name: "Mountain house",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-//   },
-// ];
-
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -92,6 +65,8 @@ const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 //Delete Form Elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
+const deleteCancelBtn = deleteModal.querySelectorAll(".modal__submit-btn")[1];
 
 
 //Edit Profile Modal
@@ -248,11 +223,19 @@ function handleDeleteSubmit(evt){
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
   api.editAvatarInfo(avatarInput.value)
     .then((data)=>{
       profileAvatar.src = data.avatar;
+      evt.target.reset();
+      disableButton(avatarSubmitBtn, settings);
+      closeModal(avatarModal);
     })
-    .catch((err)=> console.log(err));
+    .catch((err)=> console.log(err))
+    .finally(()=>{
+      setButtonText(submitBtn, false);
+    });
 }
 
 profileEditBtn.addEventListener("click", () => {
@@ -283,6 +266,12 @@ avatarModalBtn.addEventListener("click", () => {
 });
 avatarModalCloseBtn.addEventListener("click", () => {
   closeModal(avatarModal);
+});
+deleteModalCloseBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+deleteCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
 });
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);

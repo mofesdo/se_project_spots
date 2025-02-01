@@ -7,6 +7,7 @@ import {
   disableButton,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
+import { setButtonText } from "../utils/helpers.js";
 
 // Import the image
 import logo from "../images/logo.svg";
@@ -129,7 +130,6 @@ function getCardElement(data) {
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
 
-  //TODO if the card is liked. set the active class on the card;
   if(data.isLiked == true){
     cardLikeBtn.classList.add("card__like-btn_liked");
   }
@@ -173,6 +173,10 @@ function closeModalByEsc(evt) {
 function handleEditFormSubmit(evt) {
   // Prevent default browser behavior
   evt.preventDefault();
+  //change text content to saving...
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
+
   api
     .editUserInfo({name: editModalNameInput.value, about: editModalDescriptionInput.value})
     .then((data)=>{
@@ -180,10 +184,18 @@ function handleEditFormSubmit(evt) {
       profileDescription.textContent = data.about;
       closeModal(editModal);
     })
-    .catch((err)=> console.log(err));
+    .catch((err)=> console.log(err))
+    .finally(()=>{
+      //change text content back to save
+      setButtonText(submitBtn, false);
+    });
 }
+
+//TODO implement loading text for all other form submissions
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
   api
     .addCard({name: cardNameInput.value, link: cardLinkInput.value})
     .then((data)=>{
@@ -194,7 +206,10 @@ function handleAddCardSubmit(evt) {
       disableButton(cardSubmitBtn, settings);
       closeModal(cardModal);
     })
-    .catch((err)=> console.log(err));
+    .catch((err)=> console.log(err))
+    .finally(()=>{
+      setButtonText(submitBtn, false);
+    });
 }
 function handleDeleteCard(cardElement, cardId){
     selectedCard = cardElement;
@@ -215,6 +230,8 @@ function handleLike(evt, cardId){
 // variables to target the correct card.
 function handleDeleteSubmit(evt){
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true, "Delete", "Deleting...");
   api
     .deleteCard(selectedCardId) // pass the ID the the api function
     .then(() => {
@@ -223,7 +240,10 @@ function handleDeleteSubmit(evt){
       closeModal(deleteModal);
       
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(()=>{
+      setButtonText(submitBtn, false, "Delete", "Deleting...");
+    });
 }
 
 function handleAvatarSubmit(evt) {

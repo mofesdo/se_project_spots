@@ -18,13 +18,13 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then((res) => this._checkResponse(res));
+    }).then(this._checkResponse);
   }
   // other methods for working with the API
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then((res) => this._checkResponse(res));
+    }).then(this._checkResponse);
   }
   // Pass the data as an argument. In this example, we are using destructuring,
   // so we would need to pass the function an object with properties called
@@ -38,7 +38,7 @@ class Api {
         name,
         about,
       }),
-    }).then((res) => this._checkResponse(res));
+    }).then(this._checkResponse);
   }
   editAvatarInfo(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
@@ -48,7 +48,7 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
-    }).then((res) => this._checkResponse(res));
+    }).then(this._checkResponse);
   }
   //Implement POST/cards
   addCard({ name, link }) {
@@ -60,14 +60,14 @@ class Api {
         name,
         link,
       }),
-    }).then((res) => this._checkResponse(res));
+    }).then(this._checkResponse);
   }
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
       // Send the data in the body as a JSON string.
-    }).then((res) => this._checkResponse(res));
+    }).then(this._checkResponse);
   }
   toggleLike(id, isLiked) {
     const method = isLiked ? "DELETE" : "PUT";
@@ -75,7 +75,7 @@ class Api {
       method: method,
       headers: this._headers,
       // Send the data in the body as a JSON string.
-    }).then((res) => this._checkResponse(res));
+    }).then(this._checkResponse);
   }
 }
 

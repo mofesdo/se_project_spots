@@ -35,7 +35,8 @@ api.getAppInfo().then(([cards, users]) => {
   cards.forEach((item) => {
     const cardElement = getCardElement(item);
     cardsList.prepend(cardElement);
-  });
+  })
+  .catch((err) => console.log(err));
 
   //handle the users information
   //set the src of avatar img

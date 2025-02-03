@@ -41,10 +41,10 @@ api
     //set the src of avatar img
     profileAvatar.src = users.avatar;
     //set textContent of both the text elements
-    document.querySelector(".profile__name").textContent = users.name;
-    document.querySelector(".profile__description").textContent = users.about;
+    profileName.textContent = users.name;
+    profileDescription.textContent = users.about;
   })
-  .catch((err) => console.error);
+  .catch(console.error);
 
 //Profile Elements
 const profileEditBtn = document.querySelector(".profile__edit-btn");

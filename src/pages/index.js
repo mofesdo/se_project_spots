@@ -29,22 +29,22 @@ const api = new Api({
   },
 });
 //destructure the second item in the callback of the .then()
-api.getAppInfo().then(([cards, users]) => {
-  console.log(cards);
-  console.log(users);
-  cards.forEach((item) => {
-    const cardElement = getCardElement(item);
-    cardsList.prepend(cardElement);
-  })
-  .catch((err) => console.log(err));
+api
+  .getAppInfo()
+  .then(([cards, users]) => {
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.prepend(cardElement);
+    });
 
-  //handle the users information
-  //set the src of avatar img
-  profileAvatar.src = users.avatar;
-  //set textContent of both the text elements
-  document.querySelector(".profile__name").textContent = users.name;
-  document.querySelector(".profile__description").textContent = users.about;
-});
+    //handle the users information
+    //set the src of avatar img
+    profileAvatar.src = users.avatar;
+    //set textContent of both the text elements
+    document.querySelector(".profile__name").textContent = users.name;
+    document.querySelector(".profile__description").textContent = users.about;
+  })
+  .catch((err) => console.error);
 
 //Profile Elements
 const profileEditBtn = document.querySelector(".profile__edit-btn");

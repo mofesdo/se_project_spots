@@ -3,6 +3,13 @@ class Api {
     // constructor body
     this._baseUrl = baseUrl;
     this._headers = headers;
+
+    this._checkResponse = (res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      Promise.reject(`Error: ${res.status}`);
+    };
   }
 
   getAppInfo() {
@@ -11,23 +18,13 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
   // other methods for working with the API
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
   // Pass the data as an argument. In this example, we are using destructuring,
   // so we would need to pass the function an object with properties called
@@ -41,12 +38,7 @@ class Api {
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
   editAvatarInfo(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
@@ -56,12 +48,7 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
   //Implement POST/cards
   addCard({ name, link }) {
@@ -73,24 +60,14 @@ class Api {
         name,
         link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
       // Send the data in the body as a JSON string.
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
   toggleLike(id, isLiked) {
     const method = isLiked ? "DELETE" : "PUT";
@@ -98,12 +75,7 @@ class Api {
       method: method,
       headers: this._headers,
       // Send the data in the body as a JSON string.
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
 }
 

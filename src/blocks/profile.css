@@ -6,8 +6,36 @@
 .profile__avatar {
   width: 190px;
   height: 190px;
-  margin-right: 20px;
   border-radius: 8px;
+}
+.profile__avatar-container {
+  position: relative;
+  margin-right: 20px;
+}
+/* TODO - finish avatar button styles */
+.profile__avatar-btn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  visibility: hidden;
+}
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 0 0 0 8px;
+}
+.profile__avatar-container:hover .profile__avatar-btn {
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  cursor: pointer;
 }
 .profile__column {
   display: flex;
@@ -84,7 +112,7 @@
   margin-right: 8px;
   background-image: url(../images/plus.svg);
 }
-.profile__add-btn:hover{
+.profile__add-btn:hover {
   opacity: 80%;
   cursor: pointer;
 }
@@ -101,6 +129,33 @@
     width: 80px;
     height: 80px;
     margin: 0 0 12px;
+  }
+  /* TODO - finish mobile avatar button styles */
+  .profile__avatar-btn::after {
+    content: "";
+  }
+
+  .profile__avatar-btn {
+    height: 80px; /* change the height of the button in mobile screens */
+    width: 80px; /* change the width of the button in mobile screens */
+    visibility: visible;
+    display: block;
+    position: absolute;
+    top: 52px;
+    left: 52px;
+    width: 23px;
+    height: 23px;
+    padding: 4px;
+    background-image: url("../images/pencil-white.svg");
+    background-size: contain;
+    background-color: rgba(33, 33, 33, 0.6);
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .profile__pencil-icon {
+    display: none; /* hide the pencil icon that is showing the edit avatar text in mobile screens */
   }
   .profile__edit-btn {
     margin: 0 auto;
